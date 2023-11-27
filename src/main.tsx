@@ -1,10 +1,48 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import "@fontsource/inter/300.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/700.css";
+import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import App from "./App.tsx";
+import { mainStore } from "./app/core/store/mainStore.ts";
+import "./index.css";
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+import { persistStore } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
+
+const persistor = persistStore(mainStore);
+
+const theme = createTheme({
+  typography: {
+    fontFamily: "Inter, roboto, sans-serif",
+  },
+  palette: {
+    mode: "dark",
+    primary: {
+      main: "#0d6efd",
+    },
+    secondary: {
+      main: "#6c757d",
+    },
+    background: {
+      default: "#121212",
+      paper: "#1e1e1e",
+    },
+  },
+});
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Provider store={mainStore}>
+        <PersistGate loading={null} persistor={persistor}>
+          <App />
+        </PersistGate>
+      </Provider>
+    </ThemeProvider>
+  </React.StrictMode>
+);
