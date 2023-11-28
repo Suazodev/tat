@@ -76,7 +76,7 @@ export const Appbar = () => {
             LOGO
           </Typography>
           <DesktopMenu token={token} handleNavigate={handleNavigate} />
-          <UserMenu token={token} userRole={user.role ?? ""} />
+          <UserMenu token={token} userRole={user?.role ?? ""} />
         </Toolbar>
       </Container>
     </AppBar>
