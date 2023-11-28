@@ -1,28 +1,30 @@
 import { Box, Button } from "@mui/material";
 
 interface DesktopMenuProps {
-  pages: {
-    title: string;
-    path: string;
-  }[];
+  token: string;
   handleNavigate: (path: string) => void;
 }
 
 export const DesktopMenu = ({
-  pages,
+  token,
   handleNavigate,
 }: DesktopMenuProps) => {
   return (
     <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-      {pages.map((page) => (
+      {token && (
         <Button
-          key={page.title}
-          onClick={() => handleNavigate(page.path)}
+          onClick={() => handleNavigate("/appointments")}
           sx={{ my: 2, color: "white", display: "block" }}
         >
-          {page.title}
+          Appointments
         </Button>
-      ))}
+      )}
+      <Button
+        onClick={() => handleNavigate("/about")}
+        sx={{ my: 2, color: "white", display: "block" }}
+      >
+        About
+      </Button>
     </Box>
   );
 };

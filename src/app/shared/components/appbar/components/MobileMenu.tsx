@@ -3,10 +3,7 @@ import { Box, IconButton, Menu, MenuItem, Typography } from "@mui/material";
 import { MouseEvent } from "react";
 
 interface MobileMenuProps {
-  pages: {
-    title: string;
-    path: string;
-  }[];
+  token: string;
   anchorElNav: null | HTMLElement;
   handleOpenNavMenu: (event: MouseEvent<HTMLElement>) => void;
   handleCloseNavMenu: () => void;
@@ -14,7 +11,7 @@ interface MobileMenuProps {
 }
 
 export const MobileMenu = ({
-  pages,
+  token,
   anchorElNav,
   handleOpenNavMenu,
   handleCloseNavMenu,
@@ -50,11 +47,14 @@ export const MobileMenu = ({
           display: { xs: "block", md: "none" },
         }}
       >
-        {pages.map((page) => (
-          <MenuItem key={page.title} onClick={() => handleNavigate(page.path)}>
-            <Typography textAlign="center">{page.title}</Typography>
+        {token && (
+          <MenuItem onClick={() => handleNavigate("/appointments")}>
+            <Typography textAlign="center">Appointments</Typography>
           </MenuItem>
-        ))}
+        )}
+        <MenuItem onClick={() => handleNavigate("/about")}>
+          <Typography textAlign="center">About</Typography>
+        </MenuItem>
       </Menu>
     </Box>
   );

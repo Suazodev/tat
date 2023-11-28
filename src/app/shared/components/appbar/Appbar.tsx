@@ -4,20 +4,15 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { MouseEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { DesktopMenu } from "./DesktopMenu";
-import { MobileMenu } from "./MobileMenu";
-import { UserMenu } from "./UserMenu";
-
-const pages = [
-  { title: "Appointments", path: "/appointments" },
-  { title: "About", path: "/about" },
-];
+import { useAppSelector } from "../../../core/store/mainStore";
+import { DesktopMenu } from "./components/DesktopMenu";
+import { MobileMenu } from "./components/MobileMenu";
+import { UserMenu } from "./components/UserMenu";
 
 export const Appbar = () => {
   const navigate = useNavigate();
-  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(
-    null
-  );
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+  const { token, user } = useAppSelector((state) => state.user);
 
   const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -55,7 +50,7 @@ export const Appbar = () => {
             LOGO
           </Typography>
           <MobileMenu
-            pages={pages}
+            token={token}
             anchorElNav={anchorElNav}
             handleCloseNavMenu={handleCloseNavMenu}
             handleOpenNavMenu={handleOpenNavMenu}
@@ -80,8 +75,8 @@ export const Appbar = () => {
           >
             LOGO
           </Typography>
-          <DesktopMenu pages={pages} handleNavigate={handleNavigate} />
-          <UserMenu />
+          <DesktopMenu token={token} handleNavigate={handleNavigate} />
+          <UserMenu token={token} userRole={user.role ?? ""} />
         </Toolbar>
       </Container>
     </AppBar>

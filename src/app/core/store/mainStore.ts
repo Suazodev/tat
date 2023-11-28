@@ -3,7 +3,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 import thunk from 'redux-thunk';
-import userSlice from './userSlice';
+import userSlice from '../../shared/slices/userSlice';
 
 
 const reducers = combineReducers({

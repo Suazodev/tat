@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { IUser } from "../../shared/interfaces/user.interface";
-import { userModel } from "../../shared/model/user.model";
+import { IUser } from "../interfaces/user.interface";
+import { userModel } from "../model/user.model";
 
 interface UserSlice {
   user: IUser;
@@ -22,9 +22,13 @@ const counterSlice = createSlice({
     setToken: (state, action: PayloadAction<string>) => {
       state.token = action.payload;
     },
+    cleanUser: (state) => {
+      state.user = userModel;
+      state.token = "";
+    }
   },
 });
 
-export const { setUser, setToken } = counterSlice.actions;
+export const { setUser, setToken, cleanUser } = counterSlice.actions;
 
 export default counterSlice.reducer;

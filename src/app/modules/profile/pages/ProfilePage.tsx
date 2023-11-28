@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../../core/store/mainStore";
-import { setToken, setUser } from "../../../core/store/userSlice";
+import { setToken, setUser } from "../../../shared/slices/userSlice";
 
 export const ProfilePage = () => {
   const { user } = useAppSelector((state) => state.user);

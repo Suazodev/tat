@@ -9,18 +9,18 @@ import {
 } from "@mui/material";
 import { MouseEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../../../core/store/mainStore";
+import { cleanUser } from "../../../slices/userSlice";
 
-const settings = [
-  { title: "Profile", path: "/profile"},
-  { title: "Admin", path: "/admin" },
-  { title: "Logout", path: "/auth" },
-  { title: "Login", path: "/auth" },
-  { title: "Register", path: "/auth" },
-];
+interface UserMenuProps {
+  token: string;
+  userRole: string;
+}
 
-export const UserMenu = () => {
+export const UserMenu = ({ token, userRole }: UserMenuProps) => {
   const navigate = useNavigate();
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+  const dispatch = useAppDispatch();
 
   const handleOpenUserMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
@@ -33,7 +33,13 @@ export const UserMenu = () => {
   const handleNavigate = (path: string) => {
     if (anchorElUser) handleCloseUserMenu();
     navigate(path);
-  }
+  };
+
+  const handleLogout = () => {
+    if (anchorElUser) handleCloseUserMenu();
+    dispatch(cleanUser());
+    navigate("/");
+  };
 
   return (
     <Box sx={{ flexGrow: 0 }}>
@@ -58,11 +64,25 @@ export const UserMenu = () => {
         open={Boolean(anchorElUser)}
         onClose={handleCloseUserMenu}
       >
-        {settings.map((setting) => (
-          <MenuItem key={setting.title} onClick={() => handleNavigate(setting.path)}>
-            <Typography textAlign="center">{setting.title}</Typography>
+        {token && userRole === "admin" && (
+          <MenuItem onClick={() => handleNavigate("/admin")}>
+            <Typography textAlign="center">Admin</Typography>
           </MenuItem>
-        ))}
+        )}
+        {token ? (
+          <>
+            <MenuItem onClick={() => handleNavigate("/profile")}>
+              <Typography textAlign="center">Profile</Typography>
+            </MenuItem>
+            <MenuItem onClick={handleLogout}>
+              <Typography textAlign="center">Logout</Typography>
+            </MenuItem>
+          </>
+        ) : (
+          <MenuItem onClick={() => handleNavigate("/auth")}>
+            <Typography textAlign="center">Auth</Typography>
+          </MenuItem>
+        )}
       </Menu>
     </Box>
   );
