@@ -28,7 +28,7 @@ const theme = createTheme({
       main: "#ad9859",
     },
     background: {
-      default: "#152d2a",
+      default: "#171717",
       paper: "#000000",
     },
   },
@@ -36,7 +36,7 @@ const theme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: "#000",
+          backgroundColor: "black",
         },
       },
     },
