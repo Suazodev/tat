@@ -50,9 +50,9 @@ export const Appbar = () => {
             }}
           >
              <img
-              src="/public/tattoo_logo/Logo_Studio_Tattoo.png"
+              src="/assets/images/tattoo_logo/Favicon_Studio_Tattoo.png"
               alt="Logo"
-              style={{ width: 70, height: 70 }}
+              style={{ width: 60, height: 60 }}
             />
           </Typography>
           <MobileMenu
@@ -79,9 +79,9 @@ export const Appbar = () => {
             }}
           >
              <img
-              src="/public/tattoo_logo/Logo_Studio_Tattoo.png"
+              src="/assets/images/tattoo_logo/Favicon_Studio_Tattoo.png"
               alt="Logo"
-              style={{ width: 70, height: 70 }}
+              style={{ width: 60, height: 60 }}
             />
           </Typography>
           <DesktopMenu token={token} handleNavigate={handleNavigate} />
