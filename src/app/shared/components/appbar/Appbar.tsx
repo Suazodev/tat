@@ -14,24 +14,26 @@ export const Appbar = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const { token, user } = useAppSelector((state) => state.user);
 
+  
   const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
-
+  
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
+  
   const handleNavigate = (path: string) => {
     if (anchorElNav) handleCloseNavMenu();
-    navigate(path);
+    setTimeout(() => {
+      navigate(path);
+    }, 300);
   };
 
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* TODO: Poner aquí el logo */}
           <Typography
             onClick={() => handleNavigate("/")}
             variant="h6"
@@ -47,7 +49,11 @@ export const Appbar = () => {
               cursor: "pointer",
             }}
           >
-            LOGO
+             <img
+              src="/public/tattoo_logo/Logo_Studio_Tattoo.png"
+              alt="Logo"
+              style={{ width: 70, height: 70 }}
+            />
           </Typography>
           <MobileMenu
             token={token}
@@ -56,7 +62,6 @@ export const Appbar = () => {
             handleOpenNavMenu={handleOpenNavMenu}
             handleNavigate={handleNavigate}
           />
-          {/* TODO: Poner aquí el logo */}
           <Typography
             onClick={() => handleNavigate("/")}
             variant="h5"
@@ -73,7 +78,11 @@ export const Appbar = () => {
               cursor: "pointer",
             }}
           >
-            LOGO
+             <img
+              src="/public/tattoo_logo/Logo_Studio_Tattoo.png"
+              alt="Logo"
+              style={{ width: 70, height: 70 }}
+            />
           </Typography>
           <DesktopMenu token={token} handleNavigate={handleNavigate} />
           <UserMenu token={token} userRole={user?.role ?? ""} />

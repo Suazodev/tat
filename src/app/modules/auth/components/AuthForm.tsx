@@ -6,6 +6,7 @@ interface AuthFormProps {
 export const AuthForm = ({isRegistering}: AuthFormProps) => {
   const textFieldGenerator = (
     id: string,
+    type: string,
     label: string,
     autoComplete: string
   ) => (
@@ -13,6 +14,7 @@ export const AuthForm = ({isRegistering}: AuthFormProps) => {
       required
       fullWidth
       id={id}
+      type={type}
       label={label.toUpperCase()}
       name={id}
       autoComplete={autoComplete}
@@ -24,18 +26,18 @@ export const AuthForm = ({isRegistering}: AuthFormProps) => {
       {isRegistering && (
         <>
           <Grid item xs={12} sm={6}>
-            {textFieldGenerator("firstName", "First Name", "given-name")}
+            {textFieldGenerator("firstName", "text", "First Name", "given-name")}
           </Grid>
           <Grid item xs={12} sm={6}>
-            {textFieldGenerator("lastName", "Last Name", "family-name")}
+            {textFieldGenerator("lastName", "text","Last Name", "family-name")}
           </Grid>
         </>
       )}
       <Grid item xs={12}>
-        {textFieldGenerator("email", "Email Address", "email")}
+        {textFieldGenerator("email", "email", "Email Address", "email")}
       </Grid>
       <Grid item xs={12}>
-        {textFieldGenerator("password", "Password", "new-password")}
+        {textFieldGenerator("password", "password", "Password", "new-password")}
       </Grid>
     </Grid>
   );

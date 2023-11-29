@@ -1,4 +1,3 @@
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -22,7 +21,7 @@ export const AuthPage = () => {
         }}
       >
         <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <LockOutlinedIcon />
+          <img src="public/tattoo_logo/Favicon_Studio_Tattoo.png" alt="Logo" style={{ width: '100%', height: '100%' }} />
         </Avatar>
         <Typography component="h1" variant="h5">
           {isRegistering ? "Register" : "Login"}

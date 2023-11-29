@@ -32,7 +32,9 @@ export const UserMenu = ({ token, userRole }: UserMenuProps) => {
 
   const handleNavigate = (path: string) => {
     if (anchorElUser) handleCloseUserMenu();
-    navigate(path);
+    setTimeout(() => {
+      navigate(path);
+    }, 300);
   };
 
   const handleLogout = () => {

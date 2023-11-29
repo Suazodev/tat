@@ -22,14 +22,14 @@ const theme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#0d6efd",
+      main: "#ad9859",
     },
     secondary: {
-      main: "#6c757d",
+      main: "#ad9859",
     },
     background: {
-      default: "#121212",
-      paper: "#1e1e1e",
+      default: "#152d2a",
+      paper: "#000000",
     },
   },
 });
