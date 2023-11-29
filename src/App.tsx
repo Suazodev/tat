@@ -1,5 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { MainLayout } from "./MainLayout";
+import { AuthGuard } from "./app/core/guards/AuthGuard";
+import { AuthenticatedGuard } from "./app/core/guards/AuthenticatedGuard";
 import { AboutPage } from "./app/modules/about/pages/AboutPage";
 import { AdminPage } from "./app/modules/admin/pages/AdminPage";
 import { AppointmentsPage } from "./app/modules/appointments/pages/AppointmentsPage";
@@ -16,10 +18,14 @@ function App() {
         <MainLayout>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/auth" element={<AuthPage />} />
-            <Route path="/appointments" element={<AppointmentsPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/admin" element={<AdminPage />} />
+            <Route element={<AuthenticatedGuard />}>
+              <Route path="/auth" element={<AuthPage />} />
+            </Route>
+            <Route element={<AuthGuard />}>
+              <Route path="/appointments" element={<AppointmentsPage />} />
+              <Route path="/admin" element={<AdminPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+            </Route>
             <Route path="/about" element={<AboutPage />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>

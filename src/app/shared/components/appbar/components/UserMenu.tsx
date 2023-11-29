@@ -72,14 +72,14 @@ export const UserMenu = ({ token, userRole }: UserMenuProps) => {
           </MenuItem>
         )}
         {token ? (
-          <>
+          <Box>
             <MenuItem onClick={() => handleNavigate("/profile")}>
               <Typography textAlign="center">Profile</Typography>
             </MenuItem>
             <MenuItem onClick={handleLogout}>
               <Typography textAlign="center">Logout</Typography>
             </MenuItem>
-          </>
+          </Box>
         ) : (
           <MenuItem onClick={() => handleNavigate("/auth")}>
             <Typography textAlign="center">Auth</Typography>
