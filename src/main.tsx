@@ -28,19 +28,10 @@ const theme = createTheme({
       main: "#ad9859",
     },
     background: {
-      default: "#171717",
+      default: "#161616",
       paper: "#000000",
     },
   },
-  components: {
-    MuiAppBar: {
-      styleOverrides: {
-        root: {
-          backgroundColor: "black",
-        },
-      },
-    },
-  }
 });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

@@ -3,23 +3,24 @@ import { IAppointment } from "../interfaces/appointment.interface";
 import { appointmentModel } from "../model/appointment.model";
 
 interface AppointmentSlice {
-  appointment: IAppointment;
+  appointments: IAppointment[];
 }
 
 const initialState: AppointmentSlice = {
-  appointment: appointmentModel,
+  appointments: [appointmentModel],
 };
 
 const counterSlice = createSlice({
   name: "appointment",
   initialState,
   reducers: {
-    setAppointment: (state, action: PayloadAction<IAppointment>) => {
-      state.appointment = action.payload;
+    setAppointments: (state, action: PayloadAction<IAppointment[]>) => {
+      console.log(action);
+      state.appointments = action.payload;
     },
   },
 });
 
-export const { setAppointment } = counterSlice.actions;
+export const { setAppointments } = counterSlice.actions;
 
 export default counterSlice.reducer;

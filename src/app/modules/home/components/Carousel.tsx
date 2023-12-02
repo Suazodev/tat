@@ -7,35 +7,24 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const images = [
   {
-    label: "San Francisco – Oakland Bay Bridge, United States",
     imgPath: "/assets/images/tattoo_studio/Piercing01.png",
   },
   {
-    label: "Bird",
-    imgPath: "/assets/images/tattoo_studio/Piercing02.png",
-  },
-  {
-    label: "Bali, Indonesia",
     imgPath: "/assets/images/tattoo_studio/TattooStudio01.png",
   },
   {
-    label: "NeONBRAND Digital Marketing, Las Vegas, United States",
     imgPath: "/assets/images/tattoo_studio/TattooStudio02.png",
   },
   {
-    label: "Goč, Serbia",
     imgPath: "/assets/images/tattoo_studio/TattooStudio03.png",
   },
   {
-    label: "Goč, Serbia",
+    imgPath: "/assets/images/tattoo_studio/Piercing02.png",
+  },
+  {
     imgPath: "/assets/images/tattoo_studio/TattooStudio04.png",
   },
   {
-    label: "Goč, Serbia",
-    imgPath: "/assets/images/tattoo_studio/TattooStudio05.png",
-  },
-  {
-    label: "Goč, Serbia",
     imgPath: "/assets/images/tattoo_studio/TattooStudio06.png",
   },
 ];
@@ -54,10 +43,6 @@ export const Carousel = () => {
         square
         elevation={0}
         sx={{
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          pl: 2,
           bgcolor: "background.default",
         }}
       ></Paper>
@@ -73,15 +58,13 @@ export const Carousel = () => {
               <Box
                 component="img"
                 sx={{
-                  display: "block",
                   overflow: "hidden",
                   width: "100%",
-                  height: "50vh",
+                  height: "70vh",
                   objectFit: "cover",
-                  filter: "blur(3px) brightness(0.4)",
+                  filter: " brightness(0.7)",
                 }}
                 src={step.imgPath}
-                alt={step.label}
               />
             ) : null}
           </div>

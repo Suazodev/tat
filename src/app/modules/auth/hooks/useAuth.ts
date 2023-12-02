@@ -4,6 +4,7 @@ import { useAppDispatch } from "../../../core/store/mainStore";
 import { IUser } from "../../../shared/interfaces/user.interface";
 import { setToken, setUser } from "../../../shared/slices/userSlice";
 import { loginUser, registerUser } from "../services/auth.service";
+import { CustomAlert } from "../../../shared/components/alert/Alert";
 
 export const useAuth = () => {
   const [isRegistering, setIsRegistering] = useState(false);
@@ -30,7 +31,7 @@ export const useAuth = () => {
         await handleUserLogin(user);
       });
     } catch (error) {
-      console.error(error);
+      return <CustomAlert />;
     }
   };
 

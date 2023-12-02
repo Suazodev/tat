@@ -1,4 +1,3 @@
-import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
@@ -14,16 +13,16 @@ export const AuthPage = () => {
     <Container component="main" maxWidth="xs">
       <Box
         sx={{
-          marginTop: 8,
+          marginTop: 10,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <img src="public/tattoo_logo/Favicon_Studio_Tattoo.png" alt="Logo" style={{ width: '100%', height: '100%' }} />
-        </Avatar>
-        <Typography component="h1" variant="h5">
+        <Typography variant="h4"
+          style={{
+            color: "#ad9859",
+          }}>
           {isRegistering ? "Register" : "Login"}
         </Typography>
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
